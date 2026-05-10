@@ -121,14 +121,16 @@ function App() {
                     className="btn"
                     onClick={() => {
                         soundEffect();
-                        page !== 'game' ? feed() : play('less')
+                        if (page !== 'game') feed();
+                        else play('less');
                     }}
                 ></button>
                 <button
                     className="btn"
                     onClick={() => {
                         soundEffect();
-                        page !== 'game' ? () => setPage('game') : () => setPage('default')
+                        if (page !== 'game') setPage('game');
+                        else setPage('default');
                     }}
                     style={{ marginTop: '8px' }}
                 ></button>
@@ -136,7 +138,8 @@ function App() {
                     className="btn"
                     onClick={() => {
                         soundEffect();
-                        page !== 'game' ? () => setPage('stats') : () => play('greater')
+                        if (page !== 'game') setPage('stats');
+                        else play('greater');
                     }}
                 ></button>
             </div>

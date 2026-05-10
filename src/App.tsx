@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Pet from './Pet'
 import logo from './assets/logo.png'
 import death from './assets/death.png'
+import soundEffectLocation from './assets/sound.wav'
 
 function App() {
     const [state, setState] = useState('idle 5s infinite step-start')
@@ -41,7 +42,8 @@ function App() {
 
     //Sound effect
     const soundEffect = () => {
-        const audio = new Audio('/src/assets/audio/sound.wav');
+        const audio = new Audio(soundEffectLocation);
+        audio.volume = 0.06
         audio.play()
     };
 

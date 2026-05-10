@@ -11,8 +11,8 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     title: 'DeskTama',
-    width: 500,
-    height: 500,
+    width: 380,
+    height: 450,
     skipTaskbar: true,
     frame: false,
     resizable: false,

@@ -11,13 +11,13 @@ function App() {
     const [age, setAge] = useState(0)
     const [weight, setWeight] = useState(5)
 
+    //Alerts when hungry/unhappy
     useEffect(() => {
         const id = setInterval(() => {
             if ((hunger < 3 || happy < 3) && page !== 'dead') {
-                const audio = new Audio('/src/assets/audio/beep.mp3');
-                audio.play()
+                soundEffect();
             }
-        }, 10000);
+        }, 1800000);
         return () => clearInterval(id);
     }, [hunger, happy, page]);
 
@@ -28,14 +28,24 @@ function App() {
         }, 3000);
     };
 
+    //Feeds Tamagotchi
     const feed = () => {
-        if (hunger < 6) {
+        if (hunger < 4) {
             setHunger(prev => prev + 1);
             setPage('default');
             triggerAnimation('happy');
+        } else {
+            setPage('default');
         }
     };
 
+    //Sound effect
+    const soundEffect = () => {
+        const audio = new Audio('/src/assets/audio/sound.wav');
+        audio.play()
+    };
+
+    //Descreases hunger and levels up kinda
     useEffect(() => {
         const id = setInterval(() => {
             setHappy(prev => Math.max(0, prev - 1));
@@ -50,6 +60,7 @@ function App() {
         return () => clearInterval(id);
     }, [hunger, happy])
 
+    //Checks if Tamagotchi is XO
     useEffect(() => {
         const id = setInterval(() => {
             if (hunger === 0 && happy === 0 && page !== 'dead') {
@@ -60,6 +71,7 @@ function App() {
         return () => clearInterval(id);
     }, [hunger, happy, page])
 
+    //Starts the game
     const play = (selection: string) => {
         let i = Math.floor(Math.random() * 10) + 1;
         setPage('default');
@@ -88,9 +100,9 @@ function App() {
                         <div style={{ fontSize: '24px', marginTop: '10px' }}>?</div>
                     </div>
                 ) : page === 'stats' ? (
-                    <div style={{ fontSize: "12px", textAlign: 'left', padding: '10px' }}>
+                    <div style={{ fontSize: "14px", textAlign: 'left', padding: '10px' }}>
                         <div>Age: {age} yr</div>
-                        <div>Weight: {weight}g</div>
+                        <div>Weight: {weight} lbs</div>
                         <div>Happy: {'♡'.repeat(happy) || 'None'}</div>
                         <div>Hunger: {'♡'.repeat(hunger) || 'None'}</div>
                     </div>
@@ -105,16 +117,25 @@ function App() {
             <div className="btn-group">
                 <button
                     className="btn"
-                    onClick={page !== 'game' ? () => feed() : () => play('less')}
+                    onClick={() => {
+                        soundEffect();
+                        page !== 'game' ? feed() : play('less')
+                    }}
                 ></button>
                 <button
                     className="btn"
-                    onClick={page !== 'game' ? () => setPage('game') : () => setPage('default')}
+                    onClick={() => {
+                        soundEffect();
+                        page !== 'game' ? () => setPage('game') : () => setPage('default')
+                    }}
                     style={{ marginTop: '8px' }}
                 ></button>
                 <button
                     className="btn"
-                    onClick={page !== 'game' ? () => setPage('stats') : () => play('greater')}
+                    onClick={() => {
+                        soundEffect();
+                        page !== 'game' ? () => setPage('stats') : () => play('greater')
+                    }}
                 ></button>
             </div>
         </div>

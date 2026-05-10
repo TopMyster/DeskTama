@@ -1,2 +1,3 @@
 # DeskTama
-A tamagotchi for your desktop
+
+A Tamagotchi for your desktop

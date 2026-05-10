@@ -2,6 +2,8 @@
 
 A Tamagotchi for your desktop
 
+<img width="559" height="544" alt="Screenshot 2026-05-10 at 5 01 49 PM" src="https://github.com/user-attachments/assets/aef7779f-d334-4215-ba13-f8b3614028e8" />
+
 This is a Tamagotchi that can live on your desktop. It eats, plays, gains weight, and grows! Unfortunately, it can also die.
 
 ### How to use 

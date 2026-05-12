@@ -27,6 +27,9 @@ A Tamagotchi for your desktop
 
 4. Run the application
    npm run dev
+
+5. Install on your system
+   npm run make
 ```
 >All rights reserved to **Hasbro** for everything related to **Tamagotchi**.
 
